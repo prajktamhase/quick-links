@@ -90,9 +90,9 @@ function App() {
               return(
                 <>
                 <div key={index} className='link-content'>
-                  <p className='link-text'>URL :        {url}</p>
-                  <p>Short Url : {process.env.REACT_APP_BASE_URL}/{slug}</p>
-                  <p>Clicks : {clicks}</p>
+                  <p ><span className='red-color'>URL :</span>{url}</p>
+                  <p><span className='red-color'>Short Url :</span> {process.env.REACT_APP_BASE_URL}/{slug}</p>
+                  <p><span className='red-color'>Clicks :</span> {clicks}</p>
                 </div>
                 </>
 
