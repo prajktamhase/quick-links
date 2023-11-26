@@ -4,6 +4,10 @@ import dotenv from "dotenv"
 dotenv.config();
 import Link from "./models/Link.js";
 
+import path from 'path';
+
+const __dirname = path.resolve();
+
 const app = express();
 app.use(express.json());
 
@@ -70,6 +74,14 @@ app.get('/api/links',async(req,res)=>{
         message:'Links fetch successfully'
     })
 })
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+  
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'))
+    });
+  }
 
 
 const PORT = process.env.PORT || 5000;
